@@ -16,6 +16,7 @@ def analyse_task(name,user,p_tags,inp):
                 break
     else:
         sayItagain(name,user)
+    text_process.inputdata(name,user)
 
 def sayItagain(name,user):
     print("Sorry sir! I didn't quite understand what you said? Can you please say it again")

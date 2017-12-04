@@ -12,5 +12,8 @@ def incognito(u,p):
     selenium.find_element_by_name("commit").click()
 
 def normal_mode():
-    browser = webdriver.Firefox()
-    browser.get('http://www.github.com')
+    profile = selenium.webdriver.FirefoxProfile()
+    profile.set_preference('media.navigator.permission.disabled', True)
+    profile.update_preferences()
+    firefox = selenium.webdriver.Firefox(firefox_profile=profile)
+    firefox.get('https://www.github.com')
