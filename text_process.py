@@ -1,6 +1,7 @@
 import nltk
 import googleSearch
 import analysing_input
+import speechToText
 from google import search
 
 global name;
@@ -46,8 +47,7 @@ def mainFile():
     user="Ankit"
     name="Jarvis"
     print("Hi Sir! Nice to meet you.")
-    print("Are you "+user+" ?")
-    us = input()
+    us = speechToText.getaudio("Are you "+user+" ?")
     if (us.lower()=="no" or us.lower()=="nope" or us.lower()=="na"):
         user = input("Can you please tell me who you are? If not Jessie J(Sorry for the joke)")
         print("Hi! "+user)
