@@ -10,8 +10,7 @@ global user;
 def inputdata(name,user):
     inp = speechToText.getaudio("How can I help you?")
     print(inp)
-    for w in inp:
-        w = w.lower()
+    inp=inp.lower()
     task_performing(name,user,inp)
 
 def task_performing(name,user,inp):
