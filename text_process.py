@@ -16,6 +16,7 @@ def task_performing(name,user,inp):
     inp = analysing_input.removeString(inp,"hey "+name)
     tokens=nltk.word_tokenize(inp)
     p_tags = nltk.pos_tag(tokens)
+    flag=0
     if tokens[0]=="google":
         inp=analysing_input.removeString(inp,"google")
         google_search(inp)
@@ -26,22 +27,21 @@ def task_performing(name,user,inp):
                 break
             else:
                 flag=0
-    if flag==1:
-        analysing_input.analyse_task(name, user, p_tags, inp)
-    else:
-        analysing_input.sayItagain(name,user)
-
+        print(flag)
+        if flag==1:
+            analysing_input.analyse_task(name, user, p_tags, inp)
+        else:
+            analysing_input.sayItagain(name,user)
+    analysing_input.sayItagain(name,user)
 
 def google_search(str):
     inp = input("you want me to open it in Browser or display in terminal?")
-    for i in inp:
-        if i.lower()=="browser":
-            googleSearch.searchInBrowser(str)
-            break
-        elif i.lower()=="terminal":
-            for url in google.search(str,tld='com',lang='en',start=0,stop=10,pause=2.0):
-                print(url)
-            break
+    if inp.lower()=="browser":
+        googleSearch.searchInBrowser(str)
+    elif inp.lower()=="terminal":
+        for url in google.search(str,tld='com',lang='en',start=0,stop=10,pause=2.0):
+            print(url)
+
 def mainFile():
     user="Ankit"
     name="Jarvis"

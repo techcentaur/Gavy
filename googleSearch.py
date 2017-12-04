@@ -8,9 +8,9 @@ from selenium.webdriver.common.keys import Keys
 def searchInBrowser(str):
     browser = webdriver.Firefox()
     browser.get('http://www.google.com')
-    search = browser.find_element_by_name('q')
+    search = browser.find_element_by_xpath('//*[@id="lst-ib"]')
     search.send_keys(str)
-    search.send_keys(Keys.RETURN) # hit return after you enter search text
+    search.send_keys(Keys.RETURN)
 
 def searchByLink(link):
     browser = webdriver.Firefox()
