@@ -1,5 +1,6 @@
 import selenium
 
+
 def incognito(u,p):
     firefox_profile = selenium.webdriver.FirefoxProfile()
     firefox_profile.set_preference("browser.privatebrowsing.autostart", True)
@@ -10,6 +11,7 @@ def incognito(u,p):
     username.send_keys(u)
     password.send_keys(p)
     driver.find_element_by_name("commit").click()
+
 
 def normal_mode():
     profile = selenium.webdriver.FirefoxProfile()
