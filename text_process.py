@@ -8,7 +8,8 @@ global name;
 global user;
 
 def inputdata(name,user):
-    inp = input("How can I help you?")
+    inp = speechToText.getaudio("How can I help you?")
+    print(inp)
     for w in inp:
         w = w.lower()
     task_performing(name,user,inp)
@@ -33,10 +34,9 @@ def task_performing(name,user,inp):
             analysing_input.analyse_task(name, user, p_tags, inp)
         else:
             analysing_input.sayItagain(name,user)
-    analysing_input.sayItagain(name,user)
 
 def google_search(str):
-    inp = input("you want me to open it in Browser or display in terminal?")
+    inp = speechToText.getaudio("you want me to open it in Browser or display in terminal?")
     if inp.lower()=="browser":
         googleSearch.searchInBrowser(str)
     elif inp.lower()=="terminal":
@@ -51,8 +51,9 @@ def mainFile():
     if (us.lower()=="no" or us.lower()=="nope" or us.lower()=="na"):
         user = input("Can you please tell me who you are? If not Jessie J(Sorry for the joke)")
         print("Hi! "+user)
-    print("My name is "+name+". Do you want to give me a new name for this session?")
-    inp = input()
+    else:
+        print("Hi! "+user+" sir")
+    inp = speechToText.getaudio("My name is "+name+". Do you want to give me a new name for this session?")
     if(inp.lower()=="yes"):
         name = input("What should my name be?")
         print("so, for this session I am "+name)

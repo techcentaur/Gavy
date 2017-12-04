@@ -3,20 +3,18 @@ import work_data
 import youtubeSongPD
 import githubThrough
 import text_process
+import speechToText
 
 def analyse_task(name,user,p_tags,inp):
-    temp_verbs=[]
+    verb="null"
     for (w,t) in p_tags:
         if t=="VB":
-            temp_verbs.append(w)
-    if len(temp_verbs)!=0:
-        for i in temp_verbs:
-            if i in work_data.verbData:
-                verb_analyse(i,inp)
-                break
+            verb=w
+    if verb!="null":
+        if verb in work_data.verbData:
+            verb_analyse(verb,inp)
     else:
         sayItagain(name,user)
-    text_process.inputdata(name,user)
 
 def sayItagain(name,user):
     print("Sorry sir! I didn't quite understand what you said? Can you please say it again")
@@ -47,7 +45,7 @@ def verb_analyse(verb,inpStr):
         youtubeSongPD.play(inpStr)
     elif(verb.lower()=="open"):
         if "github" in inpStr:
-            ask_Mode=input("Do you want me to open github in Incongnito mode?")
+            ask_Mode=speechToText.getaudio("Do you want me to open github in Incongnito mode?")
             if(ask_Mode.lower()=="yes"):
                 print("Please enter your credentials!")
                 u=input("username: ")

@@ -1656,3 +1656,26 @@
 1512395512260	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.google.co.in/?gfe_rd=cr&dcr=0&ei=9lIlWpDjAaeA8Qf304cI&gws_rd=ssl"
 [Parent 15531] WARNING: pipe error (74): Connection reset by peer: file /build/firefox-9cfKiA/firefox-56.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
 *** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1512397745369	geckodriver	INFO	geckodriver 0.18.0
+1512397745373	geckodriver	INFO	Listening on 127.0.0.1:45401
+1512397746528	geckodriver::marionette	INFO	Starting browser /usr/bin/firefox with args ["-marionette"]
+1512397746926	addons.xpi	WARN	Error parsing extensions state: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [amIAddonManagerStartup.readStartupData]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/addons/XPIProvider.jsm :: loadExtensionState :: line 1554"  data: no] Stack trace: loadExtensionState()@resource://gre/modules/addons/XPIProvider.jsm:1554 < getInstallState()@resource://gre/modules/addons/XPIProvider.jsm:1589 < checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:3109 < startup()@resource://gre/modules/addons/XPIProvider.jsm:2188 < callProvider()@resource://gre/modules/AddonManager.jsm:269 < _startProvider()@resource://gre/modules/AddonManager.jsm:739 < startup()@resource://gre/modules/AddonManager.jsm:906 < startup()@resource://gre/modules/AddonManager.jsm:3090 < observe()@jar:file:///usr/lib/firefox/omni.ja!/components/addonManager.js:65
+1512397747105	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not compatible with application version.
+1512397747105	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not compatible with application version.
+1512397747105	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not compatible with application version.
+1512397747123	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not compatible with application version.
+1512397747123	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not compatible with application version.
+1512397747124	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not compatible with application version.
+1512397747699	Marionette	INFO	Enabled via --marionette
+1512397747814	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not compatible with application version.
+1512397747814	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not compatible with application version.
+1512397747816	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not compatible with application version.
+1512397747817	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not compatible with application version.
+1512397750827	Marionette	INFO	Listening on port 39367
+1512397750861	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512397750923	Marionette	DEBUG	Register listener.js for window 2147483649
+1512397750963	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512397752944	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512397752944	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512397755271	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.youtube.com/user/JessicaCornish"
+1512397758715	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.youtube.com/user/JessicaCornish"
