@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import googleSearch
 from selenium import webdriver
 import speechToText
-
+import text_process
 
 def play(str):
     textToSearch = str
@@ -17,7 +17,7 @@ def play(str):
         linkD = 'https://www.ssyoutube.com' + vid['href']
         break
     googleSearch.searchByLink(link1)
-    ask_dwnld = speechToText.getaudio("Should I download the song?")
+    ask_dwnld = speechToText.getaudio(text_process.sayGavy("Should I download the song?"))
     if "yes" in ask_dwnld.lower():
         download(linkD)
 
@@ -25,4 +25,4 @@ def play(str):
 def download(str):
     googleSearch.searchByLink(str)
     webdriver.find_element_by_css_selector('.link.link-download.subname ga_track_events.download-icon').click()
-    print("The Downloading is started! Sir")
+    text_process.sayGavy("The Downloading is started! Sir")

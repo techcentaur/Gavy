@@ -3,13 +3,13 @@ import googleSearch
 import analysing_input
 import speechToText
 from google import search
+import pyttsx3
 
 global name;
 global user;
 
 def inputdata(name,user):
     inp = speechToText.getaudio("How can I help you?")
-    print(inp)
     inp=inp.lower()
     task_performing(name,user,inp)
 
@@ -42,20 +42,27 @@ def google_search(str):
         for url in google.search(str,tld='com',lang='en',start=0,stop=10,pause=2.0):
             print(url)
 
+def sayGavy(str):
+    engine = pyttsx3.init()
+    engine.say(str)
+    engine.runAndWait()
+
+
+
 def mainFile():
     user="Ankit"
     name="Jarvis"
-    print("Hi Sir! Nice to meet you.")
+    sayGavy("Hi Sir! Nice to meet you.")
     us = speechToText.getaudio("Are you "+user+" ?")
     if (us.lower()=="no" or us.lower()=="nope" or us.lower()=="na"):
-        user = input("Can you please tell me who you are? If not Jessie J(Sorry for the joke)")
-        print("Hi! "+user)
+        user = input(sayGavy("Can you please tell me who you are? If not Jessie J(Sorry for the joke)"))
+        sayGavy("Hi! "+user)
     else:
-        print("Hi! "+user+" sir")
+        sayGavy("Hi! "+user+" sir")
     inp = speechToText.getaudio("My name is "+name+". Do you want to give me a new name for this session?")
     if(inp.lower()=="yes"):
         name = input("What should my name be?")
-        print("so, for this session I am "+name)
+        sayGavy("so, for this session I am "+name)
     inputdata(name,user)
 
 
