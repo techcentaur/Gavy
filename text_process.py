@@ -5,11 +5,12 @@ import speechToText
 from google import search
 import pyttsx3
 
-global name;
-global user;
+global name
+global user
 
-def inputdata(name,user):
-    inp = speechToText.getaudio("How can I help you?")
+def inputdata(name, user):
+    sayGavy("How can I help you?")
+    inp = speechToText.getaudio()
     inp=inp.lower()
     task_performing(name,user,inp)
 
@@ -28,14 +29,14 @@ def task_performing(name,user,inp):
                 break
             else:
                 flag=0
-        print(flag)
         if flag==1:
             analysing_input.analyse_task(name, user, p_tags, inp)
         else:
             analysing_input.sayItagain(name,user)
 
 def google_search(str):
-    inp = speechToText.getaudio("you want me to open it in Browser or display in terminal?")
+    sayGavy("you want me to open it in Browser or display in terminal?")
+    inp = speechToText.getaudio()
     if inp.lower()=="browser":
         googleSearch.searchInBrowser(str)
     elif inp.lower()=="terminal":
@@ -47,21 +48,23 @@ def sayGavy(str):
     engine.say(str)
     engine.runAndWait()
 
-
-
 def mainFile():
     user="Ankit"
     name="Jarvis"
     sayGavy("Hi Sir! Nice to meet you.")
-    us = speechToText.getaudio("Are you "+user+" ?")
+    sayGavy("Are you " + user + " ?")
+    us = speechToText.getaudio()
     if (us.lower()=="no" or us.lower()=="nope" or us.lower()=="na"):
-        user = input(sayGavy("Can you please tell me who you are? If not Jessie J(Sorry for the joke)"))
+        sayGavy("Can you please tell me who you are? If not Jessie J(Sorry for the joke)")
+        user = speechToText.getaudio()
         sayGavy("Hi! "+user)
     else:
         sayGavy("Hi! "+user+" sir")
-    inp = speechToText.getaudio("My name is "+name+". Do you want to give me a new name for this session?")
+    sayGavy("My name is " + name + ". Do you want to give me a new name for this session?")
+    inp = speechToText.getaudio()
     if(inp.lower()=="yes"):
-        name = input("What should my name be?")
+        sayGavy("What should my name be?")
+        name = speechToText.getaudio()
         sayGavy("so, for this session I am "+name)
     inputdata(name,user)
 

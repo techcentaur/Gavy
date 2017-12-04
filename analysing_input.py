@@ -8,14 +8,11 @@ import speechToText
 
 def analyse_task(name,user,p_tags,inp):
     verb="null"
-    print(verb)
     for (w,t) in p_tags:
         if t=="VB":
             verb=w
-            print(verb)
     if verb!="null":
         if verb in work_data.verbData:
-            print(verb)
             verb_analyse(verb,inp)
     else:
         sayItagain(name,user)
@@ -49,7 +46,8 @@ def verb_analyse(verb,inpStr):
         youtubeSongPD.play(inpStr)
     elif(verb.lower()=="open"):
         if "github" in inpStr:
-            ask_Mode=speechToText.getaudio(sayGavy("Do you want me to open github in Incongnito mode?"))
+            sayGavy("Do you want me to open github in Incongnito mode?")
+            ask_Mode=speechToText.getaudio()
             if(ask_Mode.lower()=="yes"):
                 sayGavy("Please enter your credentials!")
                 u=input("username: ")

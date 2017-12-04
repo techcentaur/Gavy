@@ -1,10 +1,9 @@
 import speech_recognition as sr
 
-def getaudio(s):
+def getaudio():
 	#get audio from microphone
 	r=sr.Recognizer()
 	with sr.Microphone() as source:
-		print(s)
 		audio = r.listen(source)
 	try:
 		return r.recognize_google(audio)

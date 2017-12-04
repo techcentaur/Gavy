@@ -17,7 +17,8 @@ def play(str):
         linkD = 'https://www.ssyoutube.com' + vid['href']
         break
     googleSearch.searchByLink(link1)
-    ask_dwnld = speechToText.getaudio(text_process.sayGavy("Should I download the song?"))
+    text_process.sayGavy("Should I download the song?")
+    ask_dwnld = speechToText.getaudio()
     if "yes" in ask_dwnld.lower():
         download(linkD)
 
