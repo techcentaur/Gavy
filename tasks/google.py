@@ -5,13 +5,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 
-def searchInBrowser(str):
+def search_in_browser(str):
     browser = webdriver.Firefox()
     browser.get('http://www.google.com')
     search = browser.find_element_by_xpath('//*[@id="lst-ib"]')
     search.send_keys(str)
     search.send_keys(Keys.RETURN)
 
-def searchByLink(link):
+def search_by_link(link):
     browser = webdriver.Firefox()
     browser.get(link)

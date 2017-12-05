@@ -1,12 +1,13 @@
 import nltk
+
 import work_data
-import youtubeSongPD
-import githubThrough
-import text_process
-from text_process import sayGavy
-import speechToText
+import main_process
+import speech_to_text
+import tasks
+
 
 def analyse_task(name,user,p_tags,inp):
+    
     verb="null"
     for (w,t) in p_tags:
         if t=="VB":
@@ -18,8 +19,9 @@ def analyse_task(name,user,p_tags,inp):
         sayItagain(name,user)
 
 def sayItagain(name,user):
-    sayGavy("Sorry sir! I didn't quite understand what you said? Can you please say it again")
-    text_process.inputdata(name, user)
+    
+    main_process.say_gavy("Sorry sir! I didn't quite understand what you said? Can you please say it again")
+    main_process.inputdata(name, user)
 
 
 def removeString(str,str_toberemoved):
@@ -43,13 +45,13 @@ def verb_analyse(verb,inpStr):
         if inpStrTag[j-1][1]=="IN":
             inpStr=removeString(inpStr,inpStrTag[j-1][0]+"youtube")
 
-        youtubeSongPD.play(inpStr)
+        tasks.youtube.play(inpStr)
     elif(verb.lower()=="open"):
         if "github" in inpStr:
-            sayGavy("Do you want me to open github in Incongnito mode?")
+            say_gavy("Do you want me to open github in Incongnito mode?")
             ask_Mode=speechToText.getaudio()
             if(ask_Mode.lower()=="yes"):
-                sayGavy("Please enter your credentials!")
+                say_gavy("Please enter your credentials!")
                 u=input("username: ")
                 p=input("password: ")
                 githubThrough.incognito(u,p)

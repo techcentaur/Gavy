@@ -1,28 +1,27 @@
-import requests
+import urllib.request
 from bs4 import BeautifulSoup
-# import speechToText
-# from text_process import sayGavy
+import googleSearch
+from selenium import webdriver
 
 
-class YouTube:
-    def __init__(self, query, driver):
-        response = requests.get('https://www.youtube.com/results', params={'search_query': query})
-        html = response.text
-        soup = BeautifulSoup(html, 'html.parser')
-        video = soup.findAll(attrs={'class': 'yt-uix-tile-link'})[0]
-        self.id = video['href'][8:]
-        self.driver = driver
+def play(str):
+    textToSearch = str
+    query = urllib.request.quote(textToSearch)
+    url = "https://www.youtube.com/results?search_query=" + query
+    response = urllib.request.urlopen(url)
+    html = response.read()
+    soup = BeautifulSoup(html,'html.parser')
+    for vid in soup.findAll(attrs={'class': 'yt-uix-tile-link'}):
+        link1 = 'https://www.youtube.com' + vid['href']
+        linkD = 'https://www.ssyoutube.com' + vid['href']
+        break
+    googleSearch.searchByLink(link1)
+    ask_dwnld = input("Should I download the song?")
+    if "yes" in ask_dwnld.lower():
+        download(linkD)
 
-    def play(self):    
-        self.driver.get('https://www.youtube.com/watch?v=' + self.id)
 
-    def download(self):
-        self.driver.get('https://www.ssyoutube.com/watch?v=' + self.id)
-        self.driver.find_element_by_css_selector('.link.link-download.subname ga_track_events.download-icon').click()
-        # sayGavy("The Downloading is started! Sir")
-
-
-# sayGavy("Should I download the song?")
-#         ask_dwnld = speechToText.getaudio()
-#         if "yes" in ask_dwnld.lower():
-#             download(linkD)
+def download(str):
+    googleSearch.searchByLink(str)
+    webdriver.find_element_by_css_selector('.link.link-download.subname ga_track_events.download-icon').click()
+    print("The Downloading is started! Sir") 
