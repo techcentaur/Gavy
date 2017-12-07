@@ -1,6 +1,6 @@
 import urllib.request
 from bs4 import BeautifulSoup
-import googleSearch
+import google
 from selenium import webdriver
 
 
