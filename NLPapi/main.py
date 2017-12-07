@@ -1,25 +1,26 @@
 #input - string
-import nltk
-from textblob import TextBlob
-from textblob import Word
-import tasks
+import nltk,tasks
+from textblob import TextBlob,Word
 from NLPapi import stopwords_removal,lexicons_normalization
-import speech_to_text,text_to_speech
-import begin
+import listen,output,begin
 
 
 class Main:
 
 
-	def __init__(self,string, name="Gavy", user="Ankit"):
+	def __init__(self,string, names, objects):
+		"""intializes the self values and the instances of listen and output files"""
 		
-		self.inp=string
+		self.string=string
+		
+		self.name=names[1]
+		self.user=user[0]
 
-		self.name=name
-		self.user=user
+		self.listen=objects[0]
+		self.speak=objects[1]
 		
-		i=self.recognised_questions()
-		if i!=0:
+		value = self.recognised_questions()
+		if not value:
 			self.initial_process()
 
 
@@ -78,10 +79,12 @@ class Main:
 
 
 	def recognised_questions(self):
-		str1=self.inp
-		if str1.startswith("can you"):
-			text_to_speech.say_gavy(("yes, I can. But the question is will I"))
-			return 0
+		""""""
+		
+		if self.string.startswith("can you"):
+			
+			self.speak.l(("yes, I can. But the question is will I"))
+			return true
 
 
 	def tree_forming(self,string):

@@ -1,47 +1,68 @@
 import nltk
-
-import speech_to_text,text_to_speech
-
+import output, listen
 from tasks import main
 from NLPapi import main
 
-def input_data(name, user):
-    text_to_speech.say_gavy("How can I help you Sir")
-    task_str = speech_to_text.getaudio()
-    task_str=task_str.lower()
-    task(name,user,task)
+class Begin:
 
-def task(name,user,task):
-    t1=main.Main(task, name, user)
-    action = t1.action_work()
-    main.main(action,task)
 
-def begin_file():
-    #defaults
-    user="Ankit"
-    name="Gavy"
+    def __init__(self):
+        """intialises the variables"""
 
-    text_to_speech.say_gavy("Are you " + user + " ?")
-    
-    user_check = speech_to_text.getaudio()
-    for n in ['no','nah','nope','na']:
-        if n in user_check:
-            text_to_speech.say_gavy("Can you please tell me who you are?")
-            user = speech_to_text.getaudio()
-    text_to_speech.say_gavy("Hi! "+user+" sir") 
-    
-    text_to_speech.say_gavy("My name is " + name)
+        self.listen = listen.SpeechInput()
+        self.speak = output.GTTSOutput()
+        self.yeslist=['yes','yeah','yea','haan','yoo']
+        self.nolist=['no','nah','nope','na']
+        self.names()
 
-    text_to_speech.say_gavy("Do you want to give me a new name")
-    name_check = speech_to_text.getaudio()
-    for y in ['yes','yeah','yea','haan']:
-        if y in name_check:
-            text_to_speech.say_gavy("What should my name be?")
-            name = speech_to_text.getaudio()
-            text_to_speech.say_gavy("so, for this session I am "+name +".")
-    
-    input_data(name,user)
+
+    def begin(self):
+        """takes the query as an input and starts processing it"""
+
+        self.speak.output("How can I help you Sir")
+        query = self.listen.input()
+        
+        query=query.lower()
+        processing_task(query)
+
+
+    def processing_task(self,query):
+        """sending the query to the NLP-api main class"""
+
+        task = main.Main(query, [self.user,self.name],[self.listen,self.speak])
+        
+        action = t1.action_work()
+        main.main(action,task)
+
+
+    def names(self):
+        """initiats the variables and begins the converstaion"""
+
+        self.user="Ankit"
+        self.name="Gavy"
+
+        self.speak.output("Are you " + user + " ?")
+        ch = self.listen.input()
+
+        for n in nolist :
+            if n in ch:
+                self.speak.output("Can you please tell me who you are?")
+                self.user = listen.input()
+
+        self.speak.input("Hi! "+user+" sir. My name is " + name)
+        self.speak.input("Do you want to give me a new name")
+        
+        ch = self.listen.input()
+        for y in yeslist:
+            if y in ch:
+                self.speak.input("What should my name be?")
+                
+                self.name = self.listen.input()
+                self.speak.output("so, for this session I am "+name +".")
+
+
 
 
 if __name__=="__main__":
-    begin_file()
+    b = Begin()
+    b.begin()
