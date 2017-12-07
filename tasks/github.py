@@ -10,7 +10,7 @@ def login(driver, username, password):
     driver.find_element_by_name("commit").click()
 
 
-def open(driver):
+def open(driver, inp, opt):
     driver.get('https://www.github.com')
 
     opt.output('Do you want to login to Github?')
