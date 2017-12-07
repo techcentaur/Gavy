@@ -68,7 +68,3 @@ class GTTSOutput(Output):
         mixer.music.play()
         while mixer.music.get_busy():
             pass
-
-
-with GTTSOutput() as o:
-    o.output('This is console')
