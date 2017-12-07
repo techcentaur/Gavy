@@ -1,4 +1,5 @@
 import selenium
+import speech_to_text,text_to_speech
 
 
 def incognito(u,p):
@@ -19,3 +20,16 @@ def normal_mode():
     profile.update_preferences()
     firefox = selenium.webdriver.Firefox(firefox_profile=profile)
     firefox.get('https://www.github.com')
+
+def call():
+    text_to_speech.say_gavy("do you want to open it in normal mode or incognito mode?")
+    mode = speech_to_text.getaudio()
+    if "normal" in mode:
+        normal_mode()
+    else:
+        text_to_speech.say_gavy("I need credentials for login in github? Do you want to enter them?")
+        ch = speech_to_text.getaudio()
+        if "yes" in ch or "yeah" in ch:
+            username = input("username :")
+            password = input("password :")
+            incognito(username,password)

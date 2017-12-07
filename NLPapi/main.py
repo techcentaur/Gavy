@@ -2,15 +2,22 @@
 import nltk
 from textblob import TextBlob
 from textblob import Word
+import tasks
 import stopwords_removal,lexicons_normalization
+import speech_to_text,text_to_speech
+import begin
+
 
 class Main:
 
 
-	def __init__(self,string):
+	def __init__(self,string, name="Gavy", user="Ankit"):
 		
 		string=string.lower()
 		self.input=string
+
+		self.name=name
+		self.user=user
 		
 		i=self.recognised_questions()
 		if i!=0:
@@ -62,18 +69,18 @@ class Main:
 			elif branch[0] in work_on:
 				action_on=branch[0]
 		try:
-			print("action"+action)
+			self.action.append(action)
 		except:
-			self.initial_process(input("enter:"))
+			begin.input_data(self.name,self.user)
 		try:
-			print("action_on "+action_on)
+			self.action_on.append(action_on)
 		except:
-			self.initial_process(input("enter:"))
+			begin.input_data(self.name,self.user)
 
 
 	def recognised_questions(self):
 		if self.input.startswith("can you"):
-			print("yes")
+			text_to_speech.say_gavy(("yes, I can."))
 			return 0
 
 
@@ -91,3 +98,5 @@ class Main:
 	def reprocess():
 		m=Main(input("enter:"))
 	
+	def action_work():
+		return [self.action,self.action_on]

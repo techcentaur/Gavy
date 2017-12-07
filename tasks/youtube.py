@@ -1,8 +1,7 @@
 import urllib.request
 from bs4 import BeautifulSoup
-import google
-from selenium import webdriver
-
+import selenium
+import speech_to_text,text_to_speech
 
 def play(str):
     textToSearch = str
@@ -15,13 +14,27 @@ def play(str):
         link1 = 'https://www.youtube.com' + vid['href']
         linkD = 'https://www.ssyoutube.com' + vid['href']
         break
-    googleSearch.searchByLink(link1)
-    ask_dwnld = input("Should I download the song?")
+    driver = selenium.webdriver.FireFox()
+    driver.get(link1)
+    text_to_speech.say_gavy("Should I download the song?")
+    ask_dwnld = speech_to_text.getaudio()
+    
     if "yes" in ask_dwnld.lower():
-        download(linkD)
+        download(linkD,driver)
 
 
 def download(str):
-    googleSearch.searchByLink(str)
+    driver.get(str)
     webdriver.find_element_by_css_selector('.link.link-download.subname ga_track_events.download-icon').click()
-    print("The Downloading is started! Sir") 
+    text_to_speech.say_gavy("The Downloading is started! Sir")
+
+def call(str):
+    
+    if "play" in str:
+        str=str.replace("play ","")
+    if "the song" in str:
+        str=str.replace("the song ","")
+    if "in youtube" in str:
+        str=str.replace("in youtube","")
+
+    play(str)
