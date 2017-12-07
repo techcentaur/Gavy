@@ -1,7 +1,10 @@
 import nltk
 import output, listen
-from tasks import main
+import helper
+from tasks import Manager
 from NLPapi import main
+
+
 
 class Begin:
 
@@ -11,8 +14,6 @@ class Begin:
 
         self.listen = listen.SpeechInput()
         self.speak = output.GTTSOutput()
-        self.yeslist=['yes','yeah','yea','haan','yoo']
-        self.nolist=['no','nah','nope','na']
         self.names()
 
 
@@ -53,12 +54,11 @@ class Begin:
         self.speak.input("Do you want to give me a new name")
         
         ch = self.listen.input()
-        for y in yeslist:
-            if y in ch:
-                self.speak.input("What should my name be?")
-                
-                self.name = self.listen.input()
-                self.speak.output("so, for this session I am "+name +".")
+        if helper.positive(ch)
+            self.speak.input("What should my name be?")
+            
+            self.name = self.listen.input()
+            self.speak.output("so, for this session I am "+name +".")
 
 
 
