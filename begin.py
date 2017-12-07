@@ -6,7 +6,7 @@ from tasks import main
 from NLPapi import main
 
 def input_data(name, user):
-    text_to_speech.say_gavy("How can I help you, Sir?")
+    text_to_speech.say_gavy("How can I help you Sir")
     task_str = speech_to_text.getaudio()
     task_str=task_str.lower()
     task(name,user,task)
@@ -21,7 +21,7 @@ def begin_file():
     user="Ankit"
     name="Gavy"
 
-    text_to_speech.say_gavy("Hi Sir! Nice to meet you."+"Are you " + user + " ?")
+    text_to_speech.say_gavy("Are you " + user + " ?")
     
     user_check = speech_to_text.getaudio()
     for n in ['no','nah','nope','na']:
@@ -30,7 +30,9 @@ def begin_file():
             user = speech_to_text.getaudio()
     text_to_speech.say_gavy("Hi! "+user+" sir") 
     
-    text_to_speech.say_gavy("My name is " + name +".You can call me from that name.")
+    text_to_speech.say_gavy("My name is " + name)
+
+    text_to_speech.say_gavy("Do you want to give me a new name")
     name_check = speech_to_text.getaudio()
     for y in ['yes','yeah','yea','haan']:
         if y in name_check:

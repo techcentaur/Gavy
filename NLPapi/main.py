@@ -3,7 +3,7 @@ import nltk
 from textblob import TextBlob
 from textblob import Word
 import tasks
-import stopwords_removal,lexicons_normalization
+from NLPapi import stopwords_removal,lexicons_normalization
 import speech_to_text,text_to_speech
 import begin
 
@@ -13,8 +13,7 @@ class Main:
 
 	def __init__(self,string, name="Gavy", user="Ankit"):
 		
-		string=string.lower()
-		self.input=string
+		self.inp=string
 
 		self.name=name
 		self.user=user
@@ -26,7 +25,7 @@ class Main:
 
 
 	def initial_process(self):
-		string = self.string_refinement(self.input)
+		string = self.string_refinement(self.inp)
 
 		if "and" in string:
 			
@@ -79,8 +78,9 @@ class Main:
 
 
 	def recognised_questions(self):
-		if self.input.startswith("can you"):
-			text_to_speech.say_gavy(("yes, I can."))
+		str1=self.inp
+		if str1.startswith("can you"):
+			text_to_speech.say_gavy(("yes, I can. But the question is will I"))
 			return 0
 
 

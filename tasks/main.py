@@ -1,4 +1,4 @@
-import github,google,youtube
+import tasks
 import speech_to_text,text_to_speech
 
 def main(action,task):
@@ -14,19 +14,19 @@ def _call(i,j,task):
 
 	if i=='open':
 		if j=='github':
-			github.call()
+			tasks.github.call()
 		elif j=='instagram':
 			pass
 		elif j=='gmail':
 			pass
 		elif j=='reddit':
-			reddit.call()
+			tasks.reddit.call()
 		elif j=='facebook':
 			pass
 		else:
 			text_to_speech.say_gavy("Sorry sir! I didn't understand what you said!")
 	elif i=='play':
 		if j=='youtube':
-			youtube.call(task)
+			tasks.youtube.call(task)
 
 		
