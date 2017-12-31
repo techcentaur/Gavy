@@ -18,10 +18,10 @@ class SpeechInput(Input):
 
     def input(self):
         with sr.Microphone() as source:
-            audio = recog.listen(source)
+            audio = self.recog.listen(source)
         
         try:
-            return recog.recognize_google(audio)
+            return self.recog.recognize_google(audio)
         except sr.UnknownValueError:
             print('[!] Could not understand the audio!')
         except sr.RequestError as e:

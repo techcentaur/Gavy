@@ -1,7 +1,7 @@
 import nltk
 import output, listen
 import helper
-from tasks import Manager
+#from tasks import Manager
 from NLPapi import main
 
 
@@ -23,17 +23,17 @@ class Begin:
         self.speak.output("How can I help you Sir")
         query = self.listen.input()
         
-        query=query.lower()
-        processing_task(query)
+        self.query=query.lower()
+        
 
-
-    def processing_task(self,query):
+    def processing_task(self):
         """sending the query to the NLP-api main class"""
 
-        task = main.Main(query, [self.user,self.name],[self.listen,self.speak])
+        t1 = main.Main(self.query, [self.user,self.name],[self.listen,self.speak])
         
         action = t1.action_work()
-        main.main(action,task)
+        t2 = manager.TasksManager(self.listen,self.speak)
+        t2.execute(action[0],action[1],self.query)
 
 
     def names(self):
@@ -42,23 +42,22 @@ class Begin:
         self.user="Ankit"
         self.name="Gavy"
 
-        self.speak.output("Are you " + user + " ?")
+        self.speak.output("Are you " + self.user + " ?")
         ch = self.listen.input()
 
-        for n in nolist :
-            if n in ch:
-                self.speak.output("Can you please tell me who you are?")
-                self.user = listen.input()
+        if not helper.positive(ch):
+            self.speak.output("Can you please tell me who you are?")
+            self.user = listen.input()
 
-        self.speak.input("Hi! "+user+" sir. My name is " + name)
-        self.speak.input("Do you want to give me a new name")
+        self.speak.output("Hi! "+self.user+" sir. My name is " + self.name)
+        self.speak.output("Do you want to give me a new name")
         
         ch = self.listen.input()
-        if helper.positive(ch)
-            self.speak.input("What should my name be?")
+        if helper.positive(ch):
+            self.speak.output("What should my name be?")
             
             self.name = self.listen.input()
-            self.speak.output("so, for this session I am "+name +".")
+            self.speak.output("so, for this session I am "+self.name +".")
 
 
 

@@ -1,5 +1,3 @@
-
-
 def positive(response):
 	yes = ['yes', 'yeah', 'yea', 'haan', 'yo', 'yep']
 	no = ['no', 'nah', 'nope', 'na']
