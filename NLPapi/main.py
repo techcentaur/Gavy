@@ -5,6 +5,7 @@ import listen, output
 
 
 
+
 class Main:
 	def __init__(self,string, names, objects):
 		"""intializes the self values and the instances of listen and output files"""
@@ -81,7 +82,7 @@ class Main:
 		
 		if self.string.startswith("can you"):
 			
-			self.speak.l(("yes, I can. But the question is will I"))
+			self.speak.l(("yes, I can. But the question is will I?"))
 			return true
 
 
