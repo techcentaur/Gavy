@@ -1,13 +1,11 @@
-#input - string
-import nltk,tasks
-from textblob import TextBlob,Word
-from NLPapi import stopwords_removal,lexicons_normalization
-import listen,output,begin
+import nltk, tasks
+from textblob import TextBlob, Word
+from . import stopwords_removal, lexicons_normalization
+import listen, output
+
 
 
 class Main:
-
-
 	def __init__(self,string, names, objects):
 		"""intializes the self values and the instances of listen and output files"""
 		
@@ -43,7 +41,7 @@ class Main:
 
 
 
-	def string_refinement(self,string):
+	def string_refinement(self, string):
 		
 		words=['please ','hey ']
 		
@@ -58,7 +56,7 @@ class Main:
 
 
 
-	def work_entity_recognition(self,tree):
+	def work_entity_recognition(self, tree):
 
 		verb = ['open','play','check','run']
 		work_on = ['github','facebook','instagram','gmail','youtube','google','reddit']
