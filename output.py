@@ -5,7 +5,6 @@ import time
 import os
 
 
-
 class Output:
     def __init__(self):
         pass
