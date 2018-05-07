@@ -1,16 +1,12 @@
 import speech_recognition as sr
 
-
-
 class Input:
     def input(self):
         pass
 
-
 class ConsoleInput(Input):
     def input(self):
         return input('[?] ')
-
 
 class SpeechInput(Input):
     def __init__(self):
