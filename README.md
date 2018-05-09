@@ -1,4 +1,4 @@
-#Gavy
+# Gavy
 A CLI based virtual assistant to make life easier. Works through NLP.
 
 **NOTE**: As said in the sounds of music, let's start at the very beginning, a very good place to start
