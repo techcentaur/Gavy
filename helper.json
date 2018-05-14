@@ -1,0 +1,6 @@
+{
+  "response": {
+    "positive":["yes", "yea", "yeah", "haan", "han", "yo", "yep"],
+    "negative":["no", "na", "nope", "nah", "nahi"]
+  }
+}
